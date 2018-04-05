@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 package hangman;
-
 import java.util.ArrayList;
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -34,15 +32,22 @@ public class Hangman {
 
         do {
             System.out.print("Please select either difficulty 3 or 4: ");
-            difficulty = scnr.nextInt();
+            try {
+                difficulty = scnr.nextInt();
+            } catch (Exception e) {
+                System.out.println("Please insert a number");
+                difficulty = 0;
+            }
             scnr.nextLine();
             switch (difficulty) {
                 case 3:
                     mysteryWord = threeLetterWords[myRandom.nextInt(threeLetterWords.length - 1)];
+                    keepGoing = false;
                     break;
 
                 case 4:
                     mysteryWord = fourLetterWords[myRandom.nextInt(fourLetterWords.length - 1)];
+                    keepGoing = false;
                     break;
 
                 default:
@@ -95,7 +100,7 @@ public class Hangman {
 
                 }
                 System.out.println();
-            } //need to add picture drawing for Wrong guesses and a game over message-jj
+            } //need to add picture drawing for Wrong guesses-jj
             else {
                 System.out.print("WRONG");
                 wrongCounter++;
