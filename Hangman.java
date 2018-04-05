@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package hangman;
+
+import java.util.ArrayList;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,48 +22,91 @@ public class Hangman {
     public static void main(String[] args) {
         Random myRandom = new Random();
         Scanner scnr = new Scanner(System.in);
-        int difficulty = 3;
+        int difficulty;
         int wrongCounter = 0;
-        String[] threeLetterWords = {"axe","bum","dag","elk","fog","hal","ion","men","nun","aaa"};
-        //Arrays of other word lengths need to be added along with a difficulty selecction-jj
-       
-        String mysteryWord = threeLetterWords[myRandom.nextInt(9)];
-        
-        
-        char[] wordArray = new char[difficulty];
-      
-        
-        while(wrongCounter<(difficulty+3)){
-            System.out.print("Please enter a guess: ");
-        String firstGuess = scnr.nextLine();
-        if(mysteryWord.contains(firstGuess))
-        {
-            wordArray = mysteryWord.toCharArray();
-            for(int i =0; i<difficulty; i++)
-            {
-                if(wordArray[i]== firstGuess.charAt(0))
-                {
-                    System.out.print(firstGuess);
-                }
-                else
-                {
-                    System.out.print("__");
-                }
+        int lettersPrinted = 0;
+        boolean keepGoing = false;
+        String mysteryWord = "";
+        ArrayList<Character> previousGuesses = new ArrayList<>();
+        int charsPrinted = 0;
+        String[] threeLetterWords = {"axe", "bum", "dog", "elk", "fog", "ham", "ion", "men", "nun", "cat", "run", "rid", "dig", "kid"};
+        String[] fourLetterWords = {"help", "love", "luck", "muck", "joke", "poop", "kill", "find", "mind", "read", "shoe", "hair", "dogs", "clap", "hard", "soft", "rest", "nest", "best", "cool"};
+
+        do {
+            System.out.print("Please select either difficulty 3 or 4: ");
+            difficulty = scnr.nextInt();
+            scnr.nextLine();
+            switch (difficulty) {
+                case 3:
+                    mysteryWord = threeLetterWords[myRandom.nextInt(threeLetterWords.length - 1)];
+                    break;
+
+                case 4:
+                    mysteryWord = fourLetterWords[myRandom.nextInt(fourLetterWords.length - 1)];
+                    break;
+
+                default:
+                    System.out.println("Value out of range.");
+                    keepGoing = true;
+                    break;
             }
-        }
-        // correct functionality neeced to be added for wrong guesses-jj
-        //need to add picture drawing for Wrong guesses and a game over message-jj
-        else
-        {
-            System.out.println("WRONG");
-            wrongCounter++;
-        }
-        }
-        //need to add exit point for correct asnwers=jj
-        //need to add functionality to print words including past printed characters -jj
-        
-        
-        
-                
+        } while (keepGoing);
+        char[] wordArray = new char[difficulty];
+
+        while (wrongCounter < (difficulty + 3)) {
+            charsPrinted = 0;
+            if (lettersPrinted == difficulty) {
+                System.out.printf("Congratlations! You win! The word was %s.\n", mysteryWord);
+                break;
+            }
+            System.out.print("Please enter a guess: ");
+            String currentGuess = scnr.nextLine();
+            lettersPrinted = 0;
+            previousGuesses.add(currentGuess.charAt(0));
+            if (mysteryWord.contains(currentGuess)) {
+                if (mysteryWord.equals(currentGuess)) {
+                    System.out.println("Correct! The word was " + mysteryWord + ". You win!");
+                    break;
+
                 }
+                wordArray = mysteryWord.toCharArray();
+
+                for (int i = 0; i < difficulty; i++) {
+
+                    if (previousGuesses.contains(wordArray[i])) {
+                        if (charsPrinted == difficulty) {
+                            break;
+                        }
+
+                        System.out.print(wordArray[i] + " ");
+
+                        charsPrinted++;
+
+                        lettersPrinted++;
+
+                    } else {
+                        if (charsPrinted == difficulty) {
+                            break;
+                        }
+
+                        System.out.print("__ ");
+                        charsPrinted++;
+                    }
+
+                }
+                System.out.println();
+            } //need to add picture drawing for Wrong guesses and a game over message-jj
+            else {
+                System.out.print("WRONG");
+                wrongCounter++;
+                System.out.printf(" You have %d more chances\n", (difficulty + 3) - wrongCounter);
+                if (wrongCounter == difficulty + 3) {
+                    System.out.printf("Sorry, the word was %s\n", mysteryWord);
+                }
+
+            }
+
+        }
+
     }
+}
