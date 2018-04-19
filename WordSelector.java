@@ -13,16 +13,32 @@ import java.util.Scanner;
  */
 public class WordSelector {
     private int wordLength;
+    private int wordType;
     Scanner scnr = new Scanner(System.in);
     private String mysteryWord = "";
-    private String[] threeLetterWords = {"axe", "bum", "dog", "elk", "fog", "ham", "ion", "men", "nun", "cat", "run", "rid", "dig", "kid"};
-    private String[] fourLetterWords = {"help", "love", "luck", "muck", "joke", "poop", "kill", "find", "mind", "read", "shoe", "hair", "dogs", "clap", "hard", "soft", "rest", "nest", "best", "cool"};
+    private String[][] threeLetterWords = {{"dog","dad","toy"},
+                                        {"sad","rat","fat"},
+                                        {"ham","tan","bum"}};
+    
+    private String[][] fourLetterWords = {{"cool", "love", "luck"},
+                                         {"muck", "kill", "hell"},
+                                         {"poop","porg","cart"}};
 
     Random myRandom = new Random();
     public int getWordLength()
     {
         return wordLength;
     }
+
+    public void setWordType(int wordType) {
+        this.wordType = wordType;
+    }
+
+    public int getWordType() {
+        return wordType;
+    }
+    
+    
     
     public void setWordLength(int l)
     {
@@ -40,12 +56,12 @@ public class WordSelector {
         do{
         switch (wordLength) {
                 case 3:
-                    mysteryWord = threeLetterWords[myRandom.nextInt(threeLetterWords.length - 1)];
+                    mysteryWord = threeLetterWords [wordType] [myRandom.nextInt(threeLetterWords.length - 1)];
                     keepGoing = false;
                     break;
 
                 case 4:
-                    mysteryWord = fourLetterWords[myRandom.nextInt(fourLetterWords.length - 1)];
+                    mysteryWord = fourLetterWords [wordType] [myRandom.nextInt(fourLetterWords.length - 1)];
                     keepGoing = false;
                     break;
 
