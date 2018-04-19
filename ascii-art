@@ -1,0 +1,16 @@
+  System.out.println("  _________");
+  System.out.println("  |         |");
+  System.out.println("  |");         
+  System.out.println("  |");        
+  System.out.println("  |");          
+  System.out.println("  |");
+  System.out.println("__|__");
+
+	System.out.println("O");
+        System.out.println("/");
+	System.out.print("|");
+	System.out.print("\");
+        System.out.println("/ ");
+	System.out.print("\");
+
+
