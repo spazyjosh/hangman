@@ -39,11 +39,17 @@ public class Hangman {
         
         
         
+        
             System.out.print("Please select either word length 3 or 4: ");
             wordy.setWordLength(scnr.nextInt());
             scnr.nextLine();
+            do
+            {
+                System.out.print("\nPlease choose the type of word you would like.\nEnter 1 for a good word.\nEnter 2 for a bad word.\nEnter 3 for a weird word: ");
+            wordy.setWordType(scnr.nextInt()-1);
+            }while(wordy.getWordType()!=0 && wordy.getWordType()!=1&&wordy.getWordType()!=2);
             wordy.decideWord();
-            System.out.print("Please enter the amount of chances you would like: ");
+            System.out.print("\nPlease enter the amount of chances you would like: ");
             int chances = scnr.nextInt();
             scnr.nextLine();
        
