@@ -12,5 +12,53 @@
 	System.out.print("\");
         System.out.println("/ ");
 	System.out.print("\");
+	
+All outputs for our poor King Henry VIII
 
-
+  System.out.println("  _________");
+  System.out.println("  |         |");
+  System.out.println("  |         O");         
+  System.out.println("  |");        
+  System.out.println("  |");          
+  System.out.println("  |");
+  System.out.println("__|__");
+  
+     System.out.println("  _________");
+  System.out.println("  |         |");
+  System.out.println("  |         O");         
+  System.out.println("  |         |");        
+  System.out.println("  |");          
+  System.out.println("  |");
+  System.out.println("__|__");
+  
+     System.out.println("  _________");
+  System.out.println("  |         |");
+  System.out.println("  |         O");         
+  System.out.println("  |         |\\");        
+  System.out.println("  |");          
+  System.out.println("  |");
+  System.out.println("__|__");
+  
+   System.out.println("  _________");
+  System.out.println("  |         |");
+  System.out.println("  |         O");         
+  System.out.println("  |        /|\\");        
+  System.out.println("  |");          
+  System.out.println("  |");
+  System.out.println("__|__");
+  
+  System.out.println("  _________");
+  System.out.println("  |         |");
+  System.out.println("  |         O");         
+  System.out.println("  |        /|\\");        
+  System.out.println("  |        /");          
+  System.out.println("  |");
+  System.out.println("__|__");
+  
+    System.out.println("  _________");
+  System.out.println("  |         |");
+  System.out.println("  |         O");         
+  System.out.println("  |        /|\\");        
+  System.out.println("  |        / \\");          
+  System.out.println("  |");
+  System.out.println("__|__");
