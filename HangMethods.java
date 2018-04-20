@@ -11,21 +11,15 @@ package hangman;
  */
 public class HangMethods {
     Hangman myHang = new Hangman();
-    public void emptyHanger()
-    {
-  
-  System.out.println("   _________");
-  System.out.println("  |         |");
-  System.out.println("  |");         
-  System.out.println("  |");        
-  System.out.println("  |");          
-  System.out.println("  |");
-System.out.println("__|__");
-    }
+    WordSelector help = new WordSelector();
     public void hangHim()
     {
+        int selector=0;
+         float helper = (float)Hangman.chances/6f;
+         
+         selector = Math.round(helper);
         //hangman ascii art from www.berkleyinternet.com/perl/node30.htm
-        switch(Hangman.wrongCounter)
+        switch(selector)
         {
             case 0:
   System.out.println("   _________");
