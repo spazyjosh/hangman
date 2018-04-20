@@ -14,7 +14,9 @@ import java.util.Scanner;
  */
 
 public class Hangman {
+   
      public static int wrongCounter = 0;{}
+     public static int chances = 0;
     
    // public static int wrongCounter = 0;
 
@@ -22,6 +24,7 @@ public class Hangman {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        boolean lose = false;
         Random myRandom = new Random();
         Scanner scnr = new Scanner(System.in);
       //3
@@ -50,7 +53,7 @@ public class Hangman {
             }while(wordy.getWordType()!=0 && wordy.getWordType()!=1&&wordy.getWordType()!=2);
             wordy.decideWord();
             System.out.print("\nPlease enter the amount of chances you would like: ");
-            int chances = scnr.nextInt();
+            chances = scnr.nextInt();
             scnr.nextLine();
        
         char[] wordArray = new char[wordy.getWordLength()];
@@ -88,10 +91,15 @@ public class Hangman {
                 System.out.printf(" You have %d more chances\n", chances - wrongCounter);
                 
                 if (wrongCounter == chances) {
+                    hang.hangHim();
                     System.out.printf("Sorry, the word was %s\n", wordy.getMysteryWord());
+                    lose = true;
                     //hang.hangHim();
                 }
             }
+                if(lose)
+                    break;
+                
                 wordArray = wordy.getMysteryWord().toCharArray();
                 System.out.println("");
                 for (int i = 0; i < wordy.getWordLength(); i++) {
