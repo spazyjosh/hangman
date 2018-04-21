@@ -1,4 +1,4 @@
-/*
+//*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -15,10 +15,14 @@ public class HangMethods {
     public void hangHim()
     {
         int selector=0;
-         float helper = (float)Hangman.chances/6f;
+         float helper = ((float)Hangman.wrongCounter/(float)Hangman.chances)*6f;
          
          selector = Math.round(helper);
-        //hangman ascii art from www.berkleyinternet.com/perl/node30.htm
+        
+         if (selector == 6 && Hangman.chances != Hangman.wrongCounter)
+             selector = 5;
+        
+         
         switch(selector)
         {
             case 0:
@@ -42,7 +46,7 @@ public class HangMethods {
                // System.out.println("");
                 break;
             case 2:
-                     System.out.println("  _________");
+  System.out.println("   _________");
   System.out.println("  |         |");
   System.out.println("  |         O");         
   System.out.println("  |         |");        
@@ -52,7 +56,7 @@ System.out.println("__|__");
               //  System.out.println("");
                 break;
             case 3:
-               System.out.println("  _________");
+  System.out.println("   _________");
   System.out.println("  |         |");
   System.out.println("  |         O");         
   System.out.println("  |         |\\");        
@@ -61,7 +65,7 @@ System.out.println("__|__");
 System.out.println("__|__");
                 break;
             case 4:
-                  System.out.println("  _________");
+  System.out.println("   _________");
   System.out.println("  |         |");
   System.out.println("  |         O");         
   System.out.println("  |        /|\\");        
@@ -70,7 +74,7 @@ System.out.println("__|__");
 System.out.println("__|__");
                 break;
             case 5:
-                  System.out.println("  _________");
+  System.out.println("   _________");
   System.out.println("  |         |");
   System.out.println("  |         O");         
   System.out.println("  |        /|\\");        
@@ -82,7 +86,7 @@ System.out.println("__|__");
                 break;
             case 6:
                 
-    System.out.println("  _________");
+  System.out.println("   __________");
   System.out.println("  |         |");
   System.out.println("  |         O");         
   System.out.println("  |        /|\\");        
